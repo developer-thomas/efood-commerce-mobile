@@ -1,0 +1,20 @@
+<div class="flex flex-col gap-3 items-center justify-center space-y-4 mb-5">
+  @if(iconName) {
+    <ion-icon [name]="iconName" class="text-primary-custom text-8xl"></ion-icon>
+  }
+  <h1 class="text-xl font-bold">{{ title }}</h1>
+  <p class="text-sm text-gray-600-custom text-center">{{ description }}</p>
+  <button 
+    class="
+      bg-primary-custom 
+      text-white-custom 
+      w-full 
+      rounded-full 
+      py-1 
+      font-semibold
+    " 
+    (click)="onSubmit.emit()"
+  >
+    {{ buttonText }}
+  </button>
+</div>
