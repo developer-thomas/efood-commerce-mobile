@@ -1,0 +1,60 @@
+<form [formGroup]="formLogin" (ngSubmit)="onSubmit()">
+  <div class="flex flex-col gap-3 items-center justify-center">
+    <div class="w-full">
+      <input 
+        type="text" 
+        placeholder="Email ou CPF" 
+        class="base-input text-sm" 
+        formControlName="email"
+      >
+    </div>
+    <div class="w-full relative">
+      <div>
+        <input 
+          placeholder="Senha" 
+          class="base-input text-sm" 
+          [type]="passwordVisible ? 'text' : 'password'"
+          formControlName="password"
+        >
+        <ion-icon 
+          [name]="passwordVisible ? 'eye-off-outline' : 'eye-outline'" 
+          class="absolute right-2 top-4 -translate-y-1/2 text-gray-600-custom" 
+          (click)="togglePasswordVisibility()">
+        </ion-icon>
+      </div>
+
+      <div class="flex items-center justify-between mt-2">
+        <div></div>
+        <small class="text-primary-custom">Esqueceu sua senha?</small>
+      </div>
+    </div>
+    <!-- Botão de login -->
+    <div class="w-full mt-7">
+      <button 
+        class="bg-primary-custom text-white-custom w-full rounded-full py-1 font-semibold"
+        type="submit"
+        [disabled]="formLogin.invalid"
+      >
+        Entrar
+      </button>
+    </div>
+  </div>
+
+  <hr class="my-10"/>
+
+  <!-- Login redes sociais -->
+  <div class="my-8">
+    <div class="flex items-center justify-around gap-2">
+      <div class="bg-white-custom rounded-full flex items-center justify-center border p-3">
+        <ion-icon name="logo-facebook" class="w-7 h-7 text-blue-500"></ion-icon>
+      </div>
+      <div class="bg-white-custom rounded-full flex items-center justify-center border p-3">
+        <ion-icon name="logo-twitter" class="w-7 h-7 text-sky-500"></ion-icon>
+      </div>
+      <div class="bg-white-custom rounded-full flex items-center justify-center border p-3">
+        <ion-icon name="logo-google" class="w-7 h-7 text-red-500"></ion-icon>
+      </div>
+    </div>
+
+  </div>
+</form>
