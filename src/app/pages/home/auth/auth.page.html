@@ -1,0 +1,56 @@
+<ion-content [fullscreen]="true">
+  <section class="h-full">
+    <div class="bg-primary-custom h-56 w-full relative z-0 [clip-path:ellipse(100%_80%_at_50%_20%)]">
+      <div class="toolbar"></div>
+    </div>
+  
+    <div class="bg-secondary-custom relative z-10 flex items-center justify-center border mx-5 rounded-xl shadow-lg mt-[-100px]">
+      <div class="p-6 w-full">
+
+         <!--Botões de ação para login ou registro -->
+        @if (registerStep !== 'success' && action !== 'forgot-password') {
+          <div class="flex flex-col items-center justify-center mb-14">
+            <div class="border-gray-200 border rounded-full flex justify-center">
+              <div 
+                class="rounded-full px-10 font-semibold text-sm p-1 transition-all duration-300 border-none"
+                [ngClass]="{'bg-primary-custom text-white-custom': action === 'login', 'bg-transparent text-black border border-gray-200': action === 'register'}"
+                (click)="toggleAction('login')"
+              >
+                Entrar
+              </div>
+              <div 
+                class="rounded-full px-6 font-semibold text-sm p-1 transition-all duration-300 border-none"
+                [ngClass]="{'bg-primary-custom text-white-custom': action === 'register', 'bg-transparent text-primary-custom border border-gray-200': action === 'login'}"
+                (click)="toggleAction('register')"
+              >
+                Registrar-se
+              </div>
+            </div>
+          </div>
+        }
+        
+        @if (action === 'login') {
+          <app-login 
+            (onLogin)="onLogin($event)"
+            (onForgotPassword)="toggleAction('forgot-password')"
+          />
+        }
+
+        @if (action === 'register') {
+          <app-register
+            (stepChange)="onRegisterStepChange($event)"
+            (onRegister)="onRegister($event)"
+            (onBackToLogin)="onRegisterBackToLogin()"
+          />
+        }
+
+        @if(action === 'forgot-password') {
+          <app-forgot-password 
+            (onForgotPassword)="onForgotPassword($event)"
+            (onBackToLogin)="toggleAction('login')"
+          />
+        }
+      </div>
+    </div>
+  </section>
+</ion-content>

@@ -1,0 +1,97 @@
+<!-- Step 1: Dados pessoais -->
+@if (formRegisterStep === 'personal') {
+  <form [formGroup]="formRegister">
+    <div class="flex flex-col gap-3 items-center justify-center space-y-4">
+      <div class="w-full">
+        <input type="text" placeholder="Nome" class="base-input text-sm" formControlName="name">
+      </div>
+      <div class="w-full">
+        <input type="email" placeholder="Email" class="base-input text-sm" formControlName="email">
+      </div>
+      <div class="w-full">
+        <input type="text" placeholder="Telefone" class="base-input text-sm" formControlName="phone">
+      </div>
+      <div class="w-full">
+        <input type="text" placeholder="CPF" class="base-input text-sm" formControlName="cpf">
+      </div>
+      <div class="w-full">
+        <input type="text" placeholder="Data de nascimento" class="base-input text-sm" formControlName="birthDate">
+      </div>
+      <div class="w-full">
+        <input type="password" placeholder="Senha" class="base-input text-sm" formControlName="password">
+      </div>
+      <div class="w-full">
+        <input type="password" placeholder="Confirmar senha" class="base-input text-sm" formControlName="confirmPassword">
+      </div>
+      <div class="w-full">
+        <button
+          type="button"
+          class="bg-primary-custom text-white-custom w-full rounded-full py-1 font-semibold"
+          (click)="nextStep()"
+        >
+          Próximo
+        </button>
+      </div>
+    </div>
+  </form>
+}
+
+<!-- Step 2: Endereço -->
+@if (formRegisterStep === 'address') {
+  <form [formGroup]="addressForm" (ngSubmit)="onSubmitRegister()">
+    <div class="flex flex-col gap-3 items-center justify-center space-y-4">
+      <div class="w-full">
+        <input type="text" placeholder="CEP" class="base-input text-sm" formControlName="zipCode">
+      </div>
+      <div class="w-full">
+        <input type="text" placeholder="País" class="base-input text-sm" formControlName="country">
+      </div>
+      <div class="w-full">
+        <input type="text" placeholder="Estado" class="base-input text-sm" formControlName="state">
+      </div>
+      <div class="w-full">
+        <input type="text" placeholder="Cidade" class="base-input text-sm" formControlName="city">
+      </div>
+      <div class="w-full">
+        <input type="text" placeholder="Rua" class="base-input text-sm" formControlName="street">
+      </div>
+      <div class="w-full">
+        <input type="text" placeholder="Número" class="base-input text-sm" formControlName="number">
+      </div>
+      <div class="w-full">
+        <input type="text" placeholder="Bairro" class="base-input text-sm" formControlName="neighborhood">
+      </div>
+      <div class="w-full">
+        <input type="text" placeholder="Complemento" class="base-input text-sm" formControlName="complement">
+      </div>
+      <div class="w-full space-y-3">
+        <button
+          type="button"
+          class="bg-transparent border text-black-custom w-full rounded-full py-1 font-semibold"
+          (click)="previousStep()"
+        >
+          Voltar
+        </button>
+        <button
+          type="submit"
+          class="bg-primary-custom text-white-custom w-full rounded-full py-1 font-semibold"
+        >
+          Finalizar
+        </button>
+      </div>
+    </div>
+  </form>
+}
+
+<!-- Step 3: Sucesso -->
+@if (formRegisterStep === 'success') {
+  <div class="my-12">
+    <app-finished-process
+      iconName="checkmark-circle"
+      title="Verifique seu email"
+      description="Enviamos um link para seu email para verificar sua conta."
+      buttonText="Voltar para o login"
+      (onSubmit)="handleBackToLogin()"
+    ></app-finished-process>
+  </div>
+}
