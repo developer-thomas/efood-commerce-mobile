@@ -8,7 +8,7 @@
       <div class="p-6 w-full">
 
          <!--Botões de ação para login ou registro -->
-        @if (registerStep !== 'success') {
+        @if (registerStep !== 'success' && action !== 'forgot-password') {
           <div class="flex flex-col items-center justify-center mb-14">
             <div class="border-gray-200 border rounded-full flex justify-center">
               <div 
@@ -30,7 +30,10 @@
         }
         
         @if (action === 'login') {
-          <app-login (onLogin)="onLogin($event)"></app-login>
+          <app-login 
+            (onLogin)="onLogin($event)"
+            (onForgotPassword)="toggleAction('forgot-password')"
+          />
         }
 
         @if (action === 'register') {
@@ -38,7 +41,14 @@
             (stepChange)="onRegisterStepChange($event)"
             (onRegister)="onRegister($event)"
             (onBackToLogin)="onRegisterBackToLogin()"
-          ></app-register>
+          />
+        }
+
+        @if(action === 'forgot-password') {
+          <app-forgot-password 
+            (onForgotPassword)="onForgotPassword($event)"
+            (onBackToLogin)="toggleAction('login')"
+          />
         }
       </div>
     </div>

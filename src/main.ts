@@ -11,6 +11,11 @@ import {
   checkmarkCircleOutline, 
   lockOpenOutline,
   checkmarkCircle,
+  lockOpen,
+  arrowBack,
+  arrowBackOutline,
+  phonePortraitOutline,
+  mailOutline,
 } from 'ionicons/icons';
 
 import { routes } from './app/app.routes';
@@ -24,7 +29,13 @@ addIcons({
   eyeOffOutline,
   checkmarkCircleOutline,
   checkmarkCircle,
-  lockOpenOutline
+  lockOpenOutline,
+  lockOpen,
+  arrowBack,
+  arrowBackOutline,
+  phonePortraitOutline,
+  mailOutline,
+
 });
 
 bootstrapApplication(AppComponent, {

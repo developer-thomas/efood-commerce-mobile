@@ -17,7 +17,8 @@ import { IonIcon } from '@ionic/angular/standalone';
 })
 export class LoginComponent  implements OnInit {
   @Output() onLogin = new EventEmitter<void>();
-
+  @Output() onForgotPassword = new EventEmitter<void>();
+  
   public formLogin!: FormGroup;
   public passwordVisible: boolean = false;
 
